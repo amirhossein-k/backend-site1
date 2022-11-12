@@ -1,9 +1,11 @@
 const express = require("express"); //for install => npm i express
 const notes = require("./data/notes");
 const dotenv = require("dotenv");
+const cors = require('cors')
 
 dotenv.config();
 const app = express();
+app.use(cors())
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Listening on port ${8000}!`));
