@@ -8,7 +8,7 @@ const app = express();
 app.use(cors({
   orgin: "https://frontend-site1-git-main-amirhossein-k.vercel.app/",
   credentials:true
-  ))
+}))
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Listening on port ${8000}!`));
