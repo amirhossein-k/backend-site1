@@ -6,7 +6,7 @@ const cors = require('cors')
 dotenv.config();
 const app = express();
 app.use(cors({
-  orgin: "https://frontend-site1-git-main-amirhossein-k.vercel.app/",
+  orgin: '*',
   credentials:true
 }))
 
