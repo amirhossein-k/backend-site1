@@ -10,11 +10,11 @@ app.use(
     orgin: "*",
   })
 );
-ConnetDb();
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Listening on port ${8000}!`));
 
+ConnetDb();
 app.get("/api/test", (req, res) => res.send({ message: "Hello" }));
 
 app.get("/api/notes", (req, res) => {
