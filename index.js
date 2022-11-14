@@ -4,6 +4,8 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const ConnetDb = require("./Config/db");
 const mongoose = require("mongoose");
+const userRoutes = require("./routes/userRoutes");
+
 dotenv.config();
 const app = express();
 app.use(
@@ -28,7 +30,5 @@ app.get("/api/notes", (req, res) => {
   res.json(notes);
 });
 
-app.get("/api/notes/:id", (req, res) => {
-  const note = notes.find((item) => item._id === req.params.id);
-  res.send(note);
-});
+// Router
+app.use("/api/users", userRoutes);
