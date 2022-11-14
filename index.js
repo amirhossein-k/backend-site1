@@ -1,14 +1,16 @@
 const express = require("express"); //for install => npm i express
 const notes = require("./data/notes");
 const dotenv = require("dotenv");
-const cors = require('cors')
-
+const cors = require("cors");
+const ConnetDb = require("./Config/db");
 dotenv.config();
 const app = express();
-app.use(cors({
-  orgin: '*',
- 
-}))
+app.use(
+  cors({
+    orgin: "*",
+  })
+);
+ConnetDb();
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Listening on port ${8000}!`));
