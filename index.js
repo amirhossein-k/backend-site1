@@ -5,7 +5,7 @@ const cors = require("cors");
 const ConnetDb = require("./Config/db");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
-import { errorHandler, notFound } from "./middleware/errorMiddleware";
+import { errorHandler, notFound } from "./middlewares/errorMiddleware";
 dotenv.config();
 const app = express();
 app.use(
