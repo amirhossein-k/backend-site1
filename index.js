@@ -1,4 +1,4 @@
-const express = require("express"); //for install => npm i express
+const express = require("express"); 
 const notes = require("./data/notes");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -6,6 +6,7 @@ const ConnetDb = require("./Config/db");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
+
 dotenv.config();
 const app = express();
 app.use(
