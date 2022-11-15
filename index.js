@@ -1,11 +1,11 @@
-const express = require("express"); 
+const express = require("express");
 const notes = require("./data/notes");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const ConnetDb = require("./Config/db");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
-import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 dotenv.config();
 const app = express();
