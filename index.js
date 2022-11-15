@@ -5,7 +5,7 @@ const cors = require("cors");
 const ConnetDb = require("./Config/db");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
-
+import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 dotenv.config();
 const app = express();
 app.use(
@@ -14,6 +14,8 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Listening on port ${8000}!`));
