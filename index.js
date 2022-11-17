@@ -5,6 +5,7 @@ const cors = require("cors");
 const ConnetDb = require("./Config/db");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
+const noteRoutes = require("./routes/noteRoutes");
 // const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 dotenv.config();
@@ -30,9 +31,10 @@ ConnetDb();
 
 app.get("/api/test", (req, res) => res.send({ message: "Hello" }));
 
-app.get("/api/notes", (req, res) => {
-  res.json(notes);
-});
+// app.get("/api/notes", (req, res) => {
+//   res.json(notes);
+// });
 
 // Router
 app.use("/api/users", userRoutes);
+app.use("/api/notes", noteRoutes);
