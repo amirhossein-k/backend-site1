@@ -49,8 +49,25 @@ const UpdateNote = asyncHandler(async (req, res) => {
     res.json(updatenote);
   } else {
     res.status(404);
-    throw new Error("note found note");
+    throw new Error("not found note");
   }
 });
 
-module.exports = { getNotes, createNote, getNoteById, UpdateNote };
+const DeleteNote = asyncHandler(async (req, res) => {
+  const note = await Note.findById(req.params.id);
+
+  if (note.user.toString() !== req.user._id.toString()) {
+    res.status(401);
+    throw new Error("your cant perform action");
+  }
+
+  if (note) {
+    await note.remove();
+    res.json({ meessage: "Note Remove" });
+  } else {
+    res.status(404);
+    throw new Error("not found note");
+  }
+});
+
+module.exports = { getNotes, createNote, getNoteById, UpdateNote, DeleteNote };
