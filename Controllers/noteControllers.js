@@ -29,6 +29,7 @@ const getNoteById = asyncHandler(async (req, res) => {
   } else {
     res.status(404).json({ message: "Note not found" });
   }
+  res.json(note);
 });
 const UpdateNote = asyncHandler(async (req, res) => {
   const { title, content, category } = req.body;
