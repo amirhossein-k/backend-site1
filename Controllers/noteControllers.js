@@ -30,5 +30,27 @@ const getNoteById = asyncHandler(async (req, res) => {
     res.status(404).json({ message: "Note not found" });
   }
 });
+const UpdateNote = asyncHandler(async (req, res) => {
+  const { title, content, category } = req.body;
 
-module.exports = { getNotes, createNote, getNoteById };
+  const note = await Note.findById(req.params.id);
+
+  if (note.user.toString() !== req.user._id) {
+    res.status(401);
+    throw new Error("your cant perform action");
+  }
+  if (note) {
+    note.title = title;
+    note.content = content;
+    note.category = category;
+
+    const updatenote = await note.save();
+
+    res.json(updatenote);
+  } else {
+    res.status(404);
+    throw new Error("note found note");
+  }
+});
+
+module.exports = { getNotes, createNote, getNoteById, UpdateNote };
